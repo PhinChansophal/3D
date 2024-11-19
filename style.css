@@ -1,0 +1,46 @@
+body {
+    cursor: pointer;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    background-color: cornflowerblue; /* Optional: Add a background color */
+}
+
+.banner .slider {
+    position: absolute;
+    width: 300px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    top: 50%;
+    left: 50%; /* Center vertically */
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%) perspective(1000px);
+    animation: rotate 50s infinite linear; /* Continuous rotation */
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(450px); /* Increase translateZ for more depth */
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+/* Animation for continuous rotation */
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) perspective(1000px) rotateY(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) perspective(1000px) rotateY(-360deg);
+    }
+}
